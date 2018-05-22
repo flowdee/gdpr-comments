@@ -6,6 +6,111 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        less: {
+            admin: {
+                options: {
+                    cleancss: false
+                },
+                src: [
+                    'assets/src/less/admin.less'
+                ],
+                dest: 'assets/css/admin.css'
+            },
+            admin_min: {
+                options: {
+                    cleancss: true,
+                    compress: true
+                },
+                src: [
+                    'assets/src/less/admin.less'
+                ],
+                dest: 'assets/css/admin.min.css'
+            },
+            styles: {
+                options: {
+                    cleancss: false
+                },
+                src: [
+                    'assets/src/less/styles.less'
+                ],
+                dest: 'assets/css/styles.css'
+            },
+            styles_min: {
+                options: {
+                    cleancss: true,
+                    compress: true
+                },
+                src: [
+                    'assets/src/less/styles.less'
+                ],
+                dest: 'assets/css/styles.min.css'
+            }
+        },
+        uglify: {
+            admin: {
+                options: {
+                    beautify: true
+                },
+                src: [
+                    'assets/src/js/admin.js'
+                ],
+                dest: 'assets/js/admin.js'
+            },
+            admin_min: {
+                src: [
+                    'assets/src/js/admin.js'
+                ],
+                dest: 'assets/js/admin.min.js'
+            },
+            scripts: {
+                options: {
+                    beautify: true
+                },
+                src: [
+                    'assets/src/js/scripts.js'
+                ],
+                dest: 'assets/js/scripts.js'
+            },
+            scripts_min: {
+                src: [
+                    'assets/src/js/scripts.js'
+                ],
+                dest: 'assets/js/scripts.min.js'
+            }
+        },
+        autoprefixer: {
+            options: {
+                browsers: [
+                    'Android 2.3',
+                    'Android >= 4',
+                    'Chrome >= 20',
+                    'Firefox >= 24',
+                    'Explorer >= 8',
+                    'iOS >= 6',
+                    'Opera >= 12',
+                    'Safari >= 6'
+                ]
+            },
+            min: {
+                options: {
+                    cascade: false
+                },
+                expand: true,
+                flatten: true,
+                src: 'assets/css/*.css',
+                dest: 'assets/css/'
+            }
+        },
+        watch: {
+            less: {
+                files: 'assets/src/**/*.less',
+                tasks: 'less'
+            },
+            uglify: {
+                files: 'assets/src/**/*.js',
+                tasks: 'uglify'
+            }
+        },
         checktextdomain: {
             options: {
                 text_domain: '<%= pkg.pot.textdomain %>',
@@ -41,5 +146,10 @@ module.exports = function (grunt) {
     });
 
     // Default task.
-    grunt.registerTask( 'build', [ 'checktextdomain' ] );
+    grunt.registerTask('dist-css', ['less', 'autoprefixer']);
+    grunt.registerTask('default', ['less', 'uglify', 'autoprefixer']);
+
+    grunt.registerTask('translations', ['checktextdomain']);
+
+    grunt.registerTask( 'build', [ 'checktextdomain', 'less', 'uglify', 'autoprefixer' ] );
 };

@@ -57,13 +57,22 @@ if (!class_exists('GDPR_Comments_Settings')) {
             );
 
             add_settings_field(
-                'gdpr_comments_anonymized_ips',
+                'gdpr_comments_anonymize_ip',
                 __('Anonymize IPs', 'gdpr-comments'),
-                array(&$this, 'anonymized_ips_render'),
+                array(&$this, 'anonymize_ip_render'),
                 'gdpr_comments',
                 'gdpr_comments_general',
-                array('label_for' => 'gdpr_comments_anonymized_ips')
+                array('label_for' => 'gdpr_comments_anonymize_ip')
             );
+
+	        add_settings_field(
+		        'gdpr_comments_anonymize_stored_ips',
+		        __('Anonymize Stored IPs', 'gdpr-comments'),
+		        array(&$this, 'anonymize_stored_ips_render'),
+		        'gdpr_comments',
+		        'gdpr_comments_general',
+		        array('label_for' => 'gdpr_comments_anonymize_stored_ips')
+	        );
 
 	        // Form settings
 	        add_settings_section(
@@ -71,6 +80,15 @@ if (!class_exists('GDPR_Comments_Settings')) {
 		        __('Comments Form', 'gdpr-comments'),
 		        false,
 		        'gdpr_comments'
+	        );
+
+	        add_settings_field(
+		        'gdpr_comments_form_disable_wp_cookies_consent',
+		        __('Default Cookies Consent', 'gdpr-comments'),
+		        array(&$this, 'form_disable_wp_cookies_consent_render'),
+		        'gdpr_comments',
+		        'gdpr_comments_form',
+		        array('label_for' => 'gdpr_comments_form_disable_wp_cookies_consent')
 	        );
 
 	        add_settings_field(
@@ -117,15 +135,39 @@ if (!class_exists('GDPR_Comments_Settings')) {
             return $input;
         }
 
-	    function anonymized_ips_render() {
+	    function anonymize_ip_render() {
 
-		    $anonymized_ips = ( isset ( $this->options['anonymized_ips'] ) && $this->options['anonymized_ips'] == '1' ) ? 1 : 0;
+		    $anonymize_ip = ( isset ( $this->options['anonymize_ip'] ) && $this->options['anonymize_ip'] == '1' ) ? 1 : 0;
 		    ?>
 
-            <input type="checkbox" id="gdpr_comments_anonymized_ips" name="gdpr_comments[anonymized_ips]" value="1" <?php echo($anonymized_ips == 1 ? 'checked' : ''); ?> />
-            <label for="gdpr_comments_anonymized_ips"><?php _e('Activate in order to stored IP addresses anonymized', 'gdpr-comments'); ?></label>
+            <input type="checkbox" id="gdpr_comments_anonymize_ip" name="gdpr_comments[anonymize_ip]" value="1" <?php echo($anonymize_ip == 1 ? 'checked' : ''); ?> />
+            <label for="gdpr_comments_anonymize_ip"><?php _e('Activate in order to store IP addresses anonymized', 'gdpr-comments'); ?></label>
+            <p class="desc"><?php _e('This only takes effect on new comments.', 'gdpr-comments'); ?></p>
 		    <?php
 	    }
+
+	    function anonymize_stored_ips_render() {
+
+		    ?>
+            <button id="gdpr-comments-anonymize-stored-ips" class="button secondary"><?php _e("Anonymize stored IPs", 'gdpr-comments'); ?></button>
+            <div id="gdpr-comments-anonymize-stored-ips-result">
+                <p id="gdpr-comments-anonymize-stored-ips-result-success"><?php _e('Stored comments IPs successfully deleted.', 'gdpr-comments'); ?></p>
+                <p id="gdpr-comments-anonymize-stored-ips-result-error"><?php _e('Error. Please try again later.', 'gdpr-comments'); ?></p>
+            </div>
+            <p class="desc"><?php _e('If you have old comments on your site, then you may want to remove IP addresses from those comments as well.', 'gdpr-comments'); ?></p>
+		    <?php
+	    }
+
+	    function form_disable_wp_cookies_consent_render() {
+
+		    $form_compliance = ( isset ( $this->options['form_disable_wp_cookies_consent'] ) && $this->options['form_disable_wp_cookies_consent'] == '1' ) ? 1 : 0;
+		    ?>
+
+            <input type="checkbox" id="gdpr_comments_form_disable_wp_cookies_consent" name="gdpr_comments[form_disable_wp_cookies_consent]" value="1" <?php echo($form_compliance == 1 ? 'checked' : ''); ?> />
+            <label for="gdpr_comments_form_disable_wp_cookies_consent"><?php _e("Disable WordPress' default Cookies Consent checkbox", 'gdpr-comments'); ?></label>
+		    <?php
+	    }
+
 
 	    function form_compliance_render() {
 

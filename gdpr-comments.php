@@ -91,10 +91,13 @@ if( ! class_exists( 'GDPR_Comments' ) ) {
             if ( is_admin() ) {
                 require_once GDPR_COMMENTS_DIR . 'includes/admin/plugins.php';
                 require_once GDPR_COMMENTS_DIR . 'includes/admin/class.settings.php';
+	            require_once GDPR_COMMENTS_DIR . 'includes/admin/ajax.php';
             }
 
             // Anything else
             require_once GDPR_COMMENTS_DIR . 'includes/functions.php';
+	        require_once GDPR_COMMENTS_DIR . 'includes/scripts.php';
+	        require_once GDPR_COMMENTS_DIR . 'includes/anonymize-ip.php';
 	        require_once GDPR_COMMENTS_DIR . 'includes/comment-form.php';
         }
 

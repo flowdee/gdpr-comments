@@ -1,0 +1,11 @@
+#gdpr-comments-anonymize-stored-ips-result {
+  margin: 5px 0;
+}
+#gdpr-comments-anonymize-stored-ips-result-success {
+  display: none;
+  color: green;
+}
+#gdpr-comments-anonymize-stored-ips-result-error {
+  display: none;
+  color: red;
+}
