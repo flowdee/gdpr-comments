@@ -1,5 +1,5 @@
 === GDPR Comments ===
-Contributors: flowdee
+Contributors: flowdee, kryptonitewp
 Donate link: https://donate.flowdee.de/
 Tags: gdpr, gdpr compliance, gdpr compliant, gdpr comments, compliance, compliant
 Requires at least: 3.0.1

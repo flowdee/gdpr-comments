@@ -44,40 +44,37 @@ function gdpr_cc_comment_form_add_fields( $submit_field, $args ) {
 
 	$options = gdpr_cc_get_options();
 
-	if ( isset ( $options['form_compliance'] ) && '1' == $options['form_compliance'] ) {
+    ob_start();
 
-		ob_start();
+    gdpr_cc_comment_form_scripts()
+    ?>
+    <div id="gdpr-comments-compliance">
+        <!-- Label -->
+        <?php if ( ! empty( $options['form_label'] ) ) { ?>
+            <div id="gdpr-comments-label">
+                <?php echo esc_html( $options['form_label'] ); ?>
+            </div>
+        <?php } ?>
+        <!-- Checkbox -->
+        <?php if ( isset ( $options['form_compliance'] ) && '1' == $options['form_compliance'] && ! empty( $options['form_checkbox_label'] ) ) { ?>
+            <div id="gdpr-comments-checkbox-wrap">
+                <input id="gdpr-comments-checkbox" type="checkbox" name="gdpr_comments_checkbox" value="1" required="required" />
+                <label for="gdpr-comments-checkbox"><?php echo esc_html( $options['form_checkbox_label'] ); ?></label>
+            </div>
+        <?php } ?>
+        <!-- Text -->
+        <?php if ( isset ( $options['form_text_status'] ) && '1' == $options['form_text_status'] && ! empty( $options['form_text'] ) ) { ?>
+            <div id="gdpr-comments-compliance-text">
+                <?php echo $options['form_text']; ?>
+            </div>
+        <?php } ?>
+    </div>
 
-		gdpr_cc_comment_form_scripts()
-		?>
-		<div id="gdpr-comments-compliance">
-			<!-- Label -->
-			<?php if ( ! empty( $options['form_label'] ) ) { ?>
-				<div id="gdpr-comments-label">
-					<?php echo esc_html( $options['form_label'] ); ?>
-				</div>
-			<?php } ?>
-            <!-- Checkbox -->
-			<?php if ( ! empty( $options['form_checkbox_label'] ) ) { ?>
-                <div id="gdpr-comments-checkbox-wrap">
-                    <input id="gdpr-comments-checkbox" type="checkbox" name="gdpr_comments_checkbox" value="1" required="required" />
-                    <label for="gdpr-comments-checkbox"><?php echo esc_html( $options['form_checkbox_label'] ); ?></label>
-                </div>
-			<?php } ?>
-			<!-- Text -->
-			<?php if ( ! empty( $options['form_text'] ) ) { ?>
-				<div id="gdpr-comments-compliance-text">
-					<?php echo $options['form_text']; ?>
-				</div>
-			<?php } ?>
-		</div>
+    <?php
+    $compliance_fields = ob_get_clean();
 
-		<?php
-		$compliance_fields = ob_get_clean();
-
-		// Return
-		return $compliance_fields . $submit_field;
-	}
+    // Return
+    return $compliance_fields . $submit_field;
 };
 
 // add the filter

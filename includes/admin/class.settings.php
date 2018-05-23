@@ -92,15 +92,6 @@ if (!class_exists('GDPR_Comments_Settings')) {
 	        );
 
 	        add_settings_field(
-		        'gdpr_comments_form_compliance',
-		        __('Compliance Required', 'gdpr-comments'),
-		        array(&$this, 'form_compliance_render'),
-		        'gdpr_comments',
-		        'gdpr_comments_form',
-		        array('label_for' => 'gdpr_comments_form_compliance')
-	        );
-
-	        add_settings_field(
 		        'gdpr_comments_form_label',
 		        __('Label', 'gdpr-comments'),
 		        array(&$this, 'form_label_render'),
@@ -110,12 +101,12 @@ if (!class_exists('GDPR_Comments_Settings')) {
 	        );
 
 	        add_settings_field(
-		        'gdpr_comments_form_text',
-		        __('Compliance Text', 'gdpr-comments'),
-		        array(&$this, 'form_text_render'),
+		        'gdpr_comments_form_compliance',
+		        __('Compliance Required', 'gdpr-comments'),
+		        array(&$this, 'form_compliance_render'),
 		        'gdpr_comments',
 		        'gdpr_comments_form',
-		        array('label_for' => 'gdpr_comments_form_text')
+		        array('label_for' => 'gdpr_comments_form_compliance')
 	        );
 
 	        add_settings_field(
@@ -125,6 +116,15 @@ if (!class_exists('GDPR_Comments_Settings')) {
 		        'gdpr_comments',
 		        'gdpr_comments_form',
 		        array('label_for' => 'gdpr_comments_form_checkbox_label')
+	        );
+
+	        add_settings_field(
+		        'gdpr_comments_form_text',
+		        __('Compliance Text', 'gdpr-comments'),
+		        array(&$this, 'form_text_render'),
+		        'gdpr_comments',
+		        'gdpr_comments_form',
+		        array('label_for' => 'gdpr_comments_form_text')
 	        );
         }
 
@@ -191,15 +191,20 @@ if (!class_exists('GDPR_Comments_Settings')) {
 
         function form_text_render() {
 
+	        $status = ( isset ( $this->options['form_text_status'] ) && $this->options['form_text_status'] == '1' ) ? 1 : 0;
 	        $text = ( isset( $this->options['form_text'] ) ) ? $this->options['form_text'] : __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our privacy policy where you will get more info on where, how and why we store your data.', 'gdpr-comments' );
 
+	        ?>
+            <input type="checkbox" id="gdpr_comments_form_text_status" name="gdpr_comments[form_text_status]" value="1" <?php echo($status == 1 ? 'checked' : ''); ?> />
+            <label for="gdpr_comments_form_text_status"><?php _e('Activate in order to output the compliant text', 'gdpr-comments'); ?></label>
+            <?php
 	        $wp_editor_settings = array(
 		        'textarea_name' => 'gdpr_comments[form_text]',
 		        'textarea_rows' => 5,
 		        'media_buttons' => false
 	        );
 
-	        wp_editor( stripslashes( $text ), 'gdpr_comments_form_text', $wp_editor_settings );
+            wp_editor( stripslashes( $text ), 'gdpr_comments_form_text', $wp_editor_settings );
         }
 
 	    function form_checkbox_label_render() {

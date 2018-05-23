@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: GDPR Comments\n"
-"POT-Creation-Date: 2018-05-22 19:45+0200\n"
+"POT-Creation-Date: 2018-05-23 18:31+0200\n"
 "PO-Revision-Date: 2018-05-22 19:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: KryptoniteWP <support@kryptonitewp.com>\n"
@@ -48,19 +48,19 @@ msgid "Default Cookies Consent"
 msgstr ""
 
 #: includes/admin/class.settings.php:96
-msgid "Compliance Required"
-msgstr ""
-
-#: includes/admin/class.settings.php:105
 msgid "Label"
 msgstr ""
 
+#: includes/admin/class.settings.php:105
+msgid "Compliance Required"
+msgstr ""
+
 #: includes/admin/class.settings.php:114
-msgid "Compliance Text"
+msgid "Checkbox Label"
 msgstr ""
 
 #: includes/admin/class.settings.php:123
-msgid "Checkbox Label"
+msgid "Compliance Text"
 msgstr ""
 
 #: includes/admin/class.settings.php:144
@@ -106,19 +106,23 @@ msgid ""
 "The text which will be shown above the actual compliance text (optional)."
 msgstr ""
 
-#: includes/admin/class.settings.php:194
+#: includes/admin/class.settings.php:195
 msgid ""
 "This form collects your name, email and content so that we can keep track of "
 "the comments placed on the website. For more info check our privacy policy "
 "where you will get more info on where, how and why we store your data."
 msgstr ""
 
-#: includes/admin/class.settings.php:207
+#: includes/admin/class.settings.php:199
+msgid "Activate in order to output the compliant text"
+msgstr ""
+
+#: includes/admin/class.settings.php:212
 msgid "I agree"
 msgstr ""
 
 #. Description of the plugin/theme
-#: includes/admin/class.settings.php:221
+#: includes/admin/class.settings.php:226
 msgid "GDPR Comments Compliance"
 msgstr ""
 
