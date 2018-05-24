@@ -9,11 +9,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-GDPR compliant comments including anonymized IPs, extra checkbox and terms notice.
+Assistance to meet GDPR compliance requirements for WordPress comments.
 
 == Description ==
 
-This plugin enhances your WordPress comments to be completely GDPR compliant.
+This plugin helps you to meet GDPR compliance requirements for comments, including anonymized IPs, extra checkbox and terms notice.
 
 Features:
 
