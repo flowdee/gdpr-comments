@@ -23,8 +23,8 @@ function gdpr_cc_enqueue_admin_scripts( $hook ) {
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	// Plugin scripts
-	wp_enqueue_script( 'gdpr-comments-admin', GDPR_COMMENTS_URL . 'assets/js/admin' . $suffix . '.js', array( 'jquery' ), GDPR_COMMENTS_VER );
-	wp_enqueue_style( 'gdpr-comments-admin', GDPR_COMMENTS_URL . 'assets/css/admin' . $suffix . '.css', false, GDPR_COMMENTS_VER );
+	wp_enqueue_script( 'gdpr-comments-admin', GDPR_COMMENTS_URL . 'public/js/admin' . $suffix . '.js', array( 'jquery' ), GDPR_COMMENTS_VER );
+	wp_enqueue_style( 'gdpr-comments-admin', GDPR_COMMENTS_URL . 'public/css/admin' . $suffix . '.css', false, GDPR_COMMENTS_VER );
 
 	wp_localize_script( 'gdpr-comments-admin', 'gdpr_cc_post', array(
 		'ajax_url' => admin_url( 'admin-ajax.php' )

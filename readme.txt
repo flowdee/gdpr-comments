@@ -2,10 +2,10 @@
 Contributors: flowdee, kryptonitewp
 Donate link: https://donate.flowdee.de/
 Tags: gdpr, gdpr compliance, gdpr compliant, gdpr comments, compliance, compliant
-Requires at least: 3.0.1
+Requires at least: 4.0
 Requires PHP: 5.3
-Tested up to: 3.9.6
-Stable tag: 1.0
+Tested up to: 4.9.6
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,10 +42,16 @@ Yes of course, but please activate it individually for every single blog.
 
 == Changelog ==
 
-= 1.0 =
+= Version 1.0.1 (25th May 2018) =
+* Improvement: Optimized JS/CSS assets
+
+= Version 1.0 (24th May 2018) =
 * Initial Release
 
 == Upgrade Notice ==
 
-= 1.0 =
+= Version 1.0.1 (25th May 2018) =
+* Improvement: Optimized JS/CSS assets
+
+= Version 1.0 (24th May 2018) =
 * Initial Release

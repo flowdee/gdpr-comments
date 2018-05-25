@@ -3,7 +3,7 @@
  * Plugin Name:     GDPR Comments
  * Plugin URI:      https://wordpress.org/plugins/gdpr-comments/
  * Description:     Assistance to meet GDPR compliance requirements for WordPress comments
- * Version:         1.0.0
+ * Version:         1.0.1
  * Author:          flowdee
  * Author URI:      https://kryptonitewp.com
  * Text Domain:     gdpr-comments
@@ -66,7 +66,7 @@ if( ! class_exists( 'GDPR_Comments' ) ) {
             define( 'GDPR_COMMENTS_NAME', 'GDPR Comments' );
 
             // Plugin version
-            define( 'GDPR_COMMENTS_VER', '1.0.0' );
+            define( 'GDPR_COMMENTS_VER', '1.0.1' );
 
             // Plugin path
             define( 'GDPR_COMMENTS_DIR', plugin_dir_path( __FILE__ ) );

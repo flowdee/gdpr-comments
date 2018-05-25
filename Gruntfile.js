@@ -12,9 +12,9 @@ module.exports = function (grunt) {
                     cleancss: false
                 },
                 src: [
-                    'assets/src/less/admin.less'
+                    'assets/less/admin.less'
                 ],
-                dest: 'assets/css/admin.css'
+                dest: 'public/css/admin.css'
             },
             admin_min: {
                 options: {
@@ -22,18 +22,18 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 src: [
-                    'assets/src/less/admin.less'
+                    'assets/less/admin.less'
                 ],
-                dest: 'assets/css/admin.min.css'
+                dest: 'public/css/admin.min.css'
             },
             styles: {
                 options: {
                     cleancss: false
                 },
                 src: [
-                    'assets/src/less/styles.less'
+                    'assets/less/styles.less'
                 ],
-                dest: 'assets/css/styles.css'
+                dest: 'public/css/styles.css'
             },
             styles_min: {
                 options: {
@@ -41,42 +41,47 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 src: [
-                    'assets/src/less/styles.less'
+                    'assets/less/styles.less'
                 ],
-                dest: 'assets/css/styles.min.css'
+                dest: 'public/css/styles.min.css'
             }
         },
         uglify: {
+            options: {
+                compress: {
+                    drop_console: true // TODO: Removing console logs from final output
+                }
+            },
             admin: {
                 options: {
                     beautify: true
                 },
                 src: [
-                    'assets/src/js/admin.js'
+                    'assets/js/admin.js'
                 ],
-                dest: 'assets/js/admin.js'
+                dest: 'public/js/admin.js'
             },
             admin_min: {
                 src: [
-                    'assets/src/js/admin.js'
+                    'assets/js/admin.js'
                 ],
-                dest: 'assets/js/admin.min.js'
+                dest: 'public/js/admin.min.js'
             },
-            scripts: {
+            /*scripts: {
                 options: {
                     beautify: true
                 },
                 src: [
-                    'assets/src/js/scripts.js'
+                    'assets/js/scripts.js'
                 ],
-                dest: 'assets/js/scripts.js'
+                dest: 'public/js/scripts.js'
             },
             scripts_min: {
                 src: [
                     'assets/src/js/scripts.js'
                 ],
                 dest: 'assets/js/scripts.min.js'
-            }
+            }*/
         },
         autoprefixer: {
             options: {
@@ -103,11 +108,11 @@ module.exports = function (grunt) {
         },
         watch: {
             less: {
-                files: 'assets/src/**/*.less',
+                files: 'assets/**/*.less',
                 tasks: 'less'
             },
             uglify: {
-                files: 'assets/src/**/*.js',
+                files: 'assets/**/*.js',
                 tasks: 'uglify'
             }
         },
