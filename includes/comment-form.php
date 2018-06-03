@@ -90,7 +90,7 @@ function gdpr_cc_comment_form_scripts() {
         #gdpr-comments-compliance > div { margin: 1rem 0; }
         #gdpr-comments-checkbox-wrap { display: flex; align-items: baseline; }
         #gdpr-comments-checkbox + label { display: inline; margin: 0; }
-        #gdpr-comments-compliance-text { font-size: .9rem; }
+        #gdpr-comments-compliance-text { font-size: .8em; }
     </style>
 
     <script type="text/javascript">
