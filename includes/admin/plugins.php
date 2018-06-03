@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function gdpr_cc_action_links( $links, $file ) {
 
-    $settings_link = '<a href="' . admin_url( 'options-general.php?page=gdpr_comments' ) . '">' . esc_html__( 'Settings', 'gdpr-comments' ) . '</a>';
+    $settings_link = '<a href="' . admin_url( 'edit-comments.php?page=gdpr-comments' ) . '">' . esc_html__( 'Settings', 'gdpr-comments' ) . '</a>';
 
     if ( $file == 'gdpr-comments/gdpr-comments.php' )
         array_unshift( $links, $settings_link );
