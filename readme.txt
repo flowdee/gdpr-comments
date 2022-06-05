@@ -1,6 +1,6 @@
 === GDPR Comments ===
 Contributors: flowdee, kryptonitewp
-Donate link: https://donate.flowdee.de/
+Donate link: https://github.com/sponsors/flowdee
 Tags: gdpr, gdpr compliance, gdpr compliant, gdpr comments, compliance, compliant, dsgvo, dsgvo kommentare
 Requires at least: 4.0
 Requires PHP: 5.3
